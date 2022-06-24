@@ -50,3 +50,14 @@ DELETE FROM Shohin WHERE shohin_id = "0005";
 
 UPDATE Shohin SET torokubi = NULL WHERE shohin_id = "0008";
 
+SELECT * FROM Shohin ORDER BY shohin_id;
+
+UPDATE Shohin
+SET hanbai_tanka = hanbai_tanka * 10,
+    shiire_tanka = shiire_tanka / 2
+WHERE shohin_bunrui = "キッチン用品";
+
+START TRANSACTION;
+UPDATE Shohin SET hanbai_tanka = hanbai_tanka - 1000 WHERE shohin_mei = "カッターシャツ";
+UPDATE Shohin SET hanbai_tanka = hanbai_tanka + 1000 WHERE shohin_mei = "Tシャツ";
+COMMIT;
