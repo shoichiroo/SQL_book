@@ -32,3 +32,14 @@ DROP VIEW ShohinSum;
 
 SELECT shohin_bunrui, cnt_shohin
 FROM (SELECT shohin_bunrui, COUNT(*) AS cnt_shohin FROM Shohin GROUP BY shohin_bunrui) AS ShohinSum;
+
+SELECT * FROM Shohin;
+
+SELECT AVG(hanbai_tanka) FROM Shohin;
+
+SELECT shohin_id, shohin_mei, hanbai_tanka
+FROM Shohin
+WHERE hanbai_tanka > (SELECT AVG(hanbai_tanka) FROM Shohin);
+
+SELECT shohin_id, shohin_mei, hanbai_tanka, (SELECT AVG(hanbai_tanka) FROM Shohin) AS avg_tanka FROM Shohin;
+
